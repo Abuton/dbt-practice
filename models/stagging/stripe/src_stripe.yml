@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: stripe
+    description: A clone of the stripe database
+    database: raw
+    tables:
+      - name: payment
+        description: simple comment on the payment table
+        loaded_at_field: _batched_at
+        freshness:
+            warn_after: {count: 12, period: hour}
+            error_after: {count: 24, period: hour}
