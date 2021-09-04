@@ -6,12 +6,11 @@ with payments as (
         paymentmethod,
         status,
         amount/100 as amount,
-        created
+        created,
+        _batched_at
 
-    from raw.stripe.payment
+    from {{ source('stripe', 'payment') }}
 
 )
 
 select * from payments
-
--- credit_card, coupon, gift_card, bank_transfer
