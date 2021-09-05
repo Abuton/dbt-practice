@@ -5,7 +5,7 @@ with payments as (
         orderid,
         paymentmethod,
         status,
-        amount/100 as amount,
+        {{ cents_to_dollars('amount', 6) }} as amount,
         created,
         _batched_at
 
